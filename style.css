@@ -1,0 +1,90 @@
+:root {
+    --blue-btn: #0078D4;
+    --default-margin: 30px;
+}
+
+body {
+    font-family: "Inter", sans-serif;
+    font-size: 16px;
+    line-height: 1.8;
+    font-weight: normal;
+    color: #000;
+    margin: 0 var(--default-margin) 0 var(--default-margin);
+}
+
+header {
+    color: white;
+    width: 100%;
+    height: 75px;
+}
+
+header nav {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    column-gap: 60px;
+    margin: 53px 0;
+}
+
+header nav a {
+    color: rgba(0, 0, 0, .53);
+    text-decoration: none;
+    font-size: 22px;
+}
+
+.projects_list a, .articles_list a {
+    color: #000;
+    text-decoration: none;
+}
+
+header nav a:hover {
+    color: rgba(0, 0, 0, 1);
+    text-decoration: underline;
+    font-size: 22px;
+}
+
+#logo {
+    position: absolute;
+    top: var(--default-margin);
+    left: var(--default-margin);
+}
+
+h1 {
+    text-align: center;
+    font-size: 32px;
+    margin-bottom: 15px;
+}
+
+p:not([class]) {
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: var(--default-margin);
+}
+
+.social_links {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    column-gap: 40px;
+    align-items: center;
+    margin-top: 50px;
+}
+
+.projects_list, .articles_list {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    column-gap: 90px;
+    margin-top: 50px;
+    margin-bottom: 130px;
+}
+
+.projects_list img, .articles_list img {
+    height: 192px;
+    width: 250px;
+}
+
+#to_the_top_button {
+    float: right;
+    margin: var(--default-margin);
+}

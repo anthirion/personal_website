@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <link rel="stylesheet" href="old_style.css" />
+        <title>Jeu_video</title>
+    </head>
+
+<body>
+    <header id="deb_page">
+        <div class="boites"><a href="labyrinth.html" class="liens_site">Accueil</a></div>
+        <div class="boites"><a href="sdl.html" class="liens_site">Bibliothèque SDL2</a></div>
+        <div class="boites"><a href="tasbin.html" class="liens_site">Tas binaire</a></div>
+        <div class="boites"><a href="partition.html" class="liens_site">Partition</a></div>
+        <!-- <div class="boites"><a href="graphe.html" class="liens_site">Parcours de graphe</a></div> -->
+        <div class="boites"><a href="jeu.html" class="liens_site">Premier jeu vidéo</a></div>
+    </header>
+
+    <nav>
+        <ul>
+            <li><span class="som">Sommaire</span></li>
+            <li><a href="#defaite">Comportement du jeu en cas de défaite</a></li>
+            <li><a href="#victoire">Comportement du jeu en cas de victoire</a></li>
+        </ul>
+    </nav>
+
+    <div id="contenu">
+        <h1>Visualisation du jeu réalisé</h1>
+        <section>
+        <h2 id="defaite">Comportement du jeu en cas de défaite</h2>
+        <p>Tout ce que nous avons fait précedemment va nous permettre de réaliser notre premier jeu vidéo. Dans ce jeu, le joueur incarne un 
+            personnage évoluant dans un labyrinthe et qui doit éviter les boules qui se rapprochent de lui. Si une boule tape le joueur, celui-ci
+            perd automatiquement. <br />
+            Voici une première vidéo du jeu. Vous pouvez y voir les principales mécaniques du jeu : le joueur incarne Pikachu, qu'il peut contrôler avec les flèches directionnelles,
+            et doit éviter les Pokeball se dirigant vers lui. Pour perdre, le joueur doit exploser sur 2 Pokeballs.
+            <p><video src="videos/jeu_premiere.mp4" controls width="600"></video></p>
+        </p>
+        </section>
+
+        <section>
+        <h2 id="victoire">Comportement du jeu en cas de victoire</h2>
+        <p>Pikachu n'a pas pu éviter les Pokeballs ! Mais il a plus d'un tour dans un sac : il peut poser des bombes pour faire exploser les Pokeballs. <br />
+        Ne restons pas sur une défaite !</p>
+        <p><video src="videos/jeu_deuxieme.mp4" controls width="600"></video></p>
+        </section>
+    </div>

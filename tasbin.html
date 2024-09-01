@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <link rel="stylesheet" href="old_style.css" />
+        <title>Tas binaire</title>
+    </head>
+
+    <body>
+        <header id="deb_page">
+            <div class="boites"><a href="labyrinth.html" class="liens_site">Accueil</a></div>
+            <div class="boites"><a href="sdl.html" class="liens_site">Bibliothèque SDL2</a></div>
+            <div class="boites"><a href="tasbin.html" class="liens_site">Tas binaire</a></div>
+            <div class="boites"><a href="partition.html" class="liens_site">Partition</a></div>
+            <!-- <div class="boites"><a href="graphe.html" class="liens_site">Parcours de graphe</a></div> -->
+            <div class="boites"><a href="jeu.html" class="liens_site">Premier jeu vidéo</a></div>
+        </header>
+
+        <nav>
+            <ul>
+                <li><span class="som">Sommaire</span></li>
+                <li><a href="#presentation_tas">Présentation</a></li>
+                <li><a href="#implementation">Implémentation</a></li>
+                <li><a href="#algos">Algorithmes de gestion du tas</a></li>
+                <li><a href="#tri">Algorithme de tri</a></li>
+                <li><a href="#complexite">Complexité</a></li>
+            </ul>
+        </nav>
+        
+        <div id="contenu">
+            <h1>Structure de tas binaire</h1>
+            <section>
+                <h2 id="presentation_tas">Présentation de la structure</h2>
+                <p>Un tas est un arbre binaire, c'est-à-dire que toutes les feuilles possèdent au plus deux voisins, dont tous les niveaux,
+                    à l'exclusion peut-être du dernier qui est complet à gauche. A chaque noeud, on associe une valuation et on préserve une
+                    des deux propriétés suivantes :
+                    <ul>
+                        <li>Pour tout noeud, la valeur du père est inférieure aux valeurs de ses fils</li>
+                        <li>Pour tout noeud, la valeur du père est supérieure aux valeurs de ses fils</li>
+                    </ul>
+                    Si on choisit la première propriété, on parle de <em>tas min</em>. Sinon, on parle de <em>tas max</em>.
+                    Voici une illustration d'un tas min :
+                    <img src="img/Min-heap.png" alt="illustration d'un tas min" class="centrer">
+                    <p class="legende">Un tas min</p>
+                </p>
+            </section>
+
+            <section>
+                <h2 id="implementation">Implémentation</h2>
+                <p>Pour pouvoir manipuler ce type de structure à l'aide d'algorithmes, on va représenter l'arbre sous forme de tableau en
+                    respectant les règles suivantes :
+                    <ul>
+                        <li>La racine se situe à l'index 0</li>
+                        <li>Étant donné un noeud à l'index i, son fils gauche est à l'index 2i+1 et son fils droit à 2i+2</li>
+                        <li>Étant donné un noeud à l'index i>0, son père est à l'index (i-1)/2 (arrondi à l'entier inférieur).</li>
+                    </ul>
+                    Pour faciliter l'implémentation, j'ai choisi d'allouer un tableau fixe pour le tableau et de stocker le nombre d'éléments
+                    dans une case mémoire séparée. <br/>
+                    Voici une illustration de l'implémentation décrite ci-dessus (faite avec un tas max) :
+                    <img src="img/Binary_tree_in_array.svg" alt="implémentation d'un tas binaire" class="centrer">
+                    <p class="legende">Implémentation d'un tas max</p>
+                </p>
+            </section>
+
+            <p class="transition">J'ai utilisé plusieurs algorithmes pour manipuler les tas binaires. Dans la suite, je décrirai un à un
+                ces algorithmes. Avant de présenter les principaux algorithmes, je vais présenter deux algorithmes auxiliaires :
+                percolate-up et percolate-down. Tous les algorithmes décrits ci-dessous sont appliqués à un tas min.
+            </p>
+
+            <section>
+                <h2 id="algos">Percolate-up</h2>
+                <p>Lorsqu'on insère un noeud x, il se peut que celui-ci ne respecte plus la contrainte d'ordre. Pour la maintenir, on
+                    effectue l'opération suivante: tant que la valeur du père est supérieure à son fils de plus grande valeur, on échange le 
+                    père et ce fils. Le noeud inséré remonte alors dans l'arbre d'où l'appelation "up".
+                </p>
+            </section>
+
+            <section>
+                <h2>Percolate-down</h2>
+                <p>Lorsqu'on insère un noeud x, il se peut que celui-ci ne respecte plus la contrainte d'ordre. Pour la maintenir, on
+                    effectue l'opération suivante: tant que la valeur du père est supérieure à son fils de plus petite valeur, on échange le 
+                    père et ce fils. Le noeud inséré descend alors dans l'arbre d'où l'appelation "down".</p>
+            </section>
+
+            <section>
+                <h2>Ajouter</h2>
+                <p>Considérons que l'on veuille ajouter le noeud x à notre tas binaire. <br />
+                    On insère x à la prochaine position libre, soit la position libre la plus à gauche possible sur le dernier niveau. Puis,
+                    on effectue un percolate-up pour rétablir si nécessaire la propriété d'ordre du tas binaire.</p>
+            </section>
+
+            <section>
+                <h2>Retirer</h2>
+                <p>On souhaite retirer la racine de notre tas binaire. Cependant, il faut là aussi conserver la structure de tas binaire 
+                    après la suppression. On procède donc de la manière suivante : on supprime la racine, et on met à sa place le noeud qui 
+                    était en dernière position de l'arbre binaire puis on effectue un percolate-down.</p>
+            </section>
+
+            <section>
+                <h2>Modifier</h2>
+                <p>Il s'agit d'augmenter ou de diminuer la valeur d'un noeud tout en conservant la relation d'ordre du tas. Pour ce faire,
+                    on effectue un percolate-up si on diminue la valeur et un percolate-down si on l'augmente.
+                </p>
+            </section>
+
+            <section>
+                <h2>Construire</h2>
+                <p>Il s'agit de construire un tas avec un certain nombre de valeurs (données par exemple dans un tableau). La meilleure
+                    manière de procéder (au sens de la complexité) est d'insérer toutes les valeurs dans le tas sans se préoccuper de la
+                    relation d'ordre. Puis on la rétablit en utilisant les algorithmes de percolate-down et percolate-up.
+                </p>
+            </section>
+
+            <section>
+                <h2 id="tri">Algorithme de tri à l'aide d'un tas binaire</h2>
+                <p>Il existe de nombreux algorithmes de tri mais je ne présenterai ici que celui utilisant un tas binaire. <br />
+                Considérons que l'on veuille trier des valeurs données dans un tableau. Pour cela, on commence par construire un tas à partir de 
+                ce tableau (avec la fonction construire). Puis on sort la racine (c'est forcément le nombre le plus petit dans le tas) et
+                on met à sa place le dernier élément du tas. On effectue ensuite sur cet élément un percolate-down. On poursuit jusqu'à ce que
+                le tas soit vide.
+                <em>Ajouter illustration de Wikipedia ?</em></p>
+            </section>
+
+            <section>
+                <h2 id="complexite">Complexité de ces algorithmes</h2>
+                <p>Maintenant que nous avons décrit tous les algorithmes nécessaires, intéressons-nous à leur efficacité. Le tableau 
+                    ci-dessous résume leur complexité :
+                    <table>
+                        <tr>
+                            <th>Algorithme</th>
+                            <th>Complexité</th>
+                        </tr>
+                        <tr>
+                            <td>Percolate-up</td>
+                            <td>O(log n)</td>
+                        </tr>
+                        <tr>
+                            <td>Percolate-down</td>
+                            <td>O(log n)</td>
+                        </tr>
+                        <tr>
+                            <td>Ajouter</td>
+                            <td>O(log n)</td>
+                        </tr>
+                        <tr>
+                            <td>Retirer</td>
+                            <td>O(log n)</td>
+                        </tr>
+                        <tr>
+                            <td>Modifier</td>
+                            <td>O(log n)</td>
+                        </tr>
+                        <tr>
+                            <td>Construire</td>
+                            <td>O(n)</td>
+                        </tr>
+                        <tr>
+                            <td>Tri par tas</td>
+                            <td>O(n log n)</td>
+                        </tr>
+                    </table>
+                    <p class="legende">Complexité des différents algorithmes de manipulation d'un tas</p>
+                    <p>Remarquons que cet algorithme de tri est très bon du point de vue de la complexité : il a une complexité asymptotiquement
+                        optimale. Il est d'ailleurs aussi bon que le tri rapide. 
+                        Cependant, il est peu utilisé dans la pratique car il est en moyenne deux fois plus lent que ce dernier.
+                        De par l'implémentation en tableau que nous avons vue, la quantité de mémoire nécessaire est souvent supérieure à
+                        celle nécessaire pour le tri rapide. Il peut donc être nécessaire d'utiliser une mémoire de masse, plus éloignée que la mémoire cache. L'éloignement de 
+                        cet espace mémoire ralentit le temps d'accès à la mémoire, ce qui peut alors ralentir l'algorithme (source : Wikipedia).
+                    </p>
+                </p>
+            </section>
+            <p class="transition">Dans la suite, nous découvrirons une nouvelle structure de données : <a href="partition.html">les
+                partitions</a>.</p>
+        </div>
+            
+        <footer>
+            <p>Contenu de la page</p>
+            <p><a href="#deb_page">Haut de page</a></p>
+        </footer>
+    </body>

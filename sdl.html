@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <link rel="stylesheet" href="old_style.css" />
+        <title>SDL2</title>
+    </head>
+
+<body>
+    <header id="deb_page">
+        <div class="boites"><a href="labyrinth.html" class="liens_site">Accueil</a></div>
+        <div class="boites"><a href="sdl.html" class="liens_site">Bibliothèque SDL2</a></div>
+        <div class="boites"><a href="tasbin.html" class="liens_site">Tas binaire</a></div>
+        <div class="boites"><a href="partition.html" class="liens_site">Partition</a></div>
+        <!-- <div class="boites"><a href="graphe.html" class="liens_site">Parcours de graphe</a></div> -->
+        <div class="boites"><a href="jeu.html" class="liens_site">Premier jeu vidéo</a></div>
+    </header>
+    
+    <nav>
+        <ul>
+            <li><span class="som">Sommaire</span></li>
+            <li><a href="#presentation_sdl">Présentation</a></li>
+            <li><a href="#rendu">Rendu</a></li>
+            <li><a href="#textures">Textures</a></li>
+            <li><a href="#evenements">Evénements</a></li>
+            <li><a href="#vie">Le jeu de la vie</a></li>
+        </ul>
+    </nav>
+
+    <div id="contenu">
+        <h1>Introduction à la bibliothèque SDL2</h1>
+        <img src="img/logo_sdl2.png" alt="logo de la bibliothèque sdl">
+        <section>
+                <h2 id="presentation_sdl">Qu'est-ce que la bibliothèque SDL2 ?</h2>
+                <p>La première phase du projet a consisté à apprendre à utiliser la bibliothèque SDL2. <br />
+                    La SDL (pour Simple DirectMedia Layer) est une bibliothèque logicielle libre, utilisée pour créer des applications 
+                    multimédias en deux dimensions pouvant comprendre du son comme les jeux vidéo, les démos graphiques, les émulateurs, etc. 
+                    (extrait de Wikipedia). <br/>
+                    Cette bibliothèque permet notamment :
+                    <ul>
+                        <li>un affichage de rendus dans des fenêtres</li>
+                        <li>la gestion du son</li>
+                        <li>la gestion de périphériques tels que la souris, le clavier ou encore le joystick</li>
+                    </ul>
+                    Pour plus d'informations à ce sujet, vous pouvez visiter <a href="https://www.libsdl.org/">leur site</a> (très complet 
+                    mais malheureusement en anglais).
+                </p>
+        </section>
+
+        <section>
+            <h2 id="rendu">Dessiner sur un rendu</h2>
+            <p>La bibliothèque SDL2 permet entre autres de dessiner sur un rendu. Un rendu (ou renderer en anglais) est une zone dans 
+                laquelle il sera possible de dessiner ou de poser des images. Grâce à lui, on peut déjà construire quelques animations 
+                simples. Pour ma part, j'ai décidé de faire des carrés allant de haut en bas tout en changeant de couleur. Vous pouvez voir
+                ci-dessous le résultat :
+                <p><video src="videos/Animation_serpents.mp4" controls width="600"></video></p>
+            </p>
+        </section>
+
+        <section>
+            <h2 id="textures">Manipuler des textures</h2>
+            <p>Après avoir créer des animations simples, on va pouvoir créer des choses plus belles avec des vraies images. Pour cela, on 
+                va utiliser des textures. <br/>
+                Avec les textures, on va pouvoir faire plusieurs choses : ajouter un arrière-plan, incruster une image dans un arrière-plan,
+                ou encore faire bouger un personnage issu d'une planche de sprite. J'ai mis en ouvre chacune des fonctionnalités que je 
+                viens de citer. Vous pouvez voir ci-dessous le résultat : <br />
+                <p><video src="videos/textures.mp4" controls width="600"></video></p>
+                </p>
+        </section>
+
+        <section>
+            <h2 id="vie">Un premier jeu : le jeu de la vie</h2>
+            <p>Afin de mettre en oeuvre les connaissances acquises, j'ai codé le jeu de la vie. Le jeu de la vie est un jeu de simulation
+                de la vie et mort de plusieurs cellules. Les cellules mortes sont représentées en blanc tandis que les cellules vivantes
+                sont représentées en noir. Le joueur doit choisir la situation initiale. Si vous ne connaissez pas ce jeu, je vous 
+                recommande vivement de regarder <a href="https://www.youtube.com/watch?v=S-W0NX97DB0&t=933s">cette vidéo</a>. <br />
+                Voici une petite vidéo montrant le déroulement du jeu à partir d'une situation initiale.
+                <p><video src="videos/vie.mp4" controls width="600"></video></p>
+            </p>
+        </section>
+
+        <p class="transition">Dans la suite, nous découvrirons une nouvelle structure de données : <a href="tasbin.html">les tas 
+            binaires</a>.</p>
+    </div>
+
+    <footer>
+        <p>Contenu de la page</p>
+        <p><a href="#deb_page">Haut de page</a></p>
+    </footer>
+</body>

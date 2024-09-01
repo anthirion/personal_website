@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <link rel="stylesheet" href="old_style.css" />
+        <title>Partition</title>
+    </head>
+
+    <body>
+        <header id="deb_page">
+            <div class="boites"><a href="labyrinth.html" class="liens_site">Accueil</a></div>
+            <div class="boites"><a href="sdl.html" class="liens_site">Bibliothèque SDL2</a></div>
+            <div class="boites"><a href="tasbin.html" class="liens_site">Tas binaire</a></div>
+            <div class="boites"><a href="partition.html" class="liens_site">Partition</a></div>
+            <!-- <div class="boites"><a href="graphe.html" class="liens_site">Parcours de graphe</a></div> -->
+            <div class="boites"><a href="jeu.html" class="liens_site">Premier jeu vidéo</a></div>
+        </header>
+
+        <nav>
+            <ul>
+                <li><span class="som">Sommaire</span></li>
+                <li><a href="#presentation_partition">Présentation</a></li>
+                <li><a href="#algos">Algorithmes</a></li>
+                <li><a href="#implementation">Implémentation</a></li>
+                <li><a href="#compo_conn">Composantes connexes</a></li>
+                <li><a href="#arbre">Arbre couvrant de poids minimal et algorithme de Kruskal</a></li>
+                <li><a href="#realisation">Réalisation du labyrinthe</a></li>
+                <li><a href="#visualisation">Visualisation du labyrinthe</a></li>
+            </ul>
+        </nav>
+        
+        <div id="contenu">
+            <h1>Structure de partition</h1>
+            <section>
+                <h2 id="presentation_partition">Présentation</h2>
+                <p>L'idée derriere la notion de partition est la notion de classification : les éléments d'un ensemble sont regroupés par 
+                    paquets. <br/>
+                    Les paquets sont appelés <em>classes</em>.
+                    D'un point de vue formel, on impose néanmoins quelques restrictions supplémentaires:
+                    <ul>
+                        <li>Aucune classe ne doit être vide, autrement dit toute classe doit contenir au moins un élément.</li>
+                        <li>L'union de toutes les classes doit être égale à l'ensemble entier ce qui signifie que tout élément de
+                            l'ensemble doit appartenir à une classe.</li>
+                        <li>L'intersection entre deux classes est vide, autrement dit un élément appartient à au plus une classe.</li>
+                    </ul>
+                </p>
+            </section>
+
+            <section>
+                <h2 id="algos">Algorithmes</h2>
+                <p>Les algorithmes à écrire pour ce type de structure sont :
+                    <ul>
+                        <li>Créer qui crée une partition à partir d'une liste d'éléments</li>
+                        <li>récupérer_classe qui récupère la classe d'un élément</li>
+                        <li>fusion qui prend deux éléments x et y et fusionne leurs classes</li>
+                        <li>lister_classe qui liste les éléments de la classe fournie en entrée</li>
+                        <li>lister_partition qui renvoie la liste des classes de la partition avec leurs éléments</li>
+                    </ul>
+                    Remarquez que seule la fusion est disponible donc une fois qu'une classe est créée, on ne peut plus séparer ses éléments.
+                    C'est pourquoi on commencera dans une situation où chaque sommet est dans une seule classe et chaque classe ne possède qu'un
+                    seul sommet.
+                </p>
+            </section>
+
+            <section>
+                <h2 id="implementation">Implémentation</h2>
+                <p>Il existe deux types d'implementation pour ce type de structure :
+                    <ul>
+                        <li>l'implémentation par marqueurs</li>
+                        <li>l'implémentation arborescente</li>
+                    </ul>
+                    L'implémentation par marqueurs consiste à gérer un tableau des classes. Je ne m'attarderai pas sur cette implémentation,
+                    j'expliquerai plus en détails l'implémentation arborescente.
+                    Dans cette dernière implémentation, on représente la partition par une forêt, chaque arbre représentant une classe. Les noeuds
+                    de l'arbre sont les éléments de la classe et la racine est l'étiquette de la classe. Les graphes ont été dessinés avec l'outil
+                    <em>Graphviz</em>.
+                </p>
+            </section>
+
+            <section>
+                <h2 id="compo_conn">Composantes connexes</h2>
+                <p>Un graphe non orienté est connexe s'il existe toujours un chemin reliant deux nœuds quelconques du graphe. Les composantes connexes
+                    d'un graphe est l'ensemble contenant les sous-graphes connexes maximaux au sens de l'inclusion.
+                    <p><img src="img/graph_example.png" alt="exemple de graphe"></p>
+                    Ce graphe possède 4 composantes connexes :
+                    <p><table>
+                        <tr>
+                            <td><img src="img/graph_cc1.png" alt="composante connexe"></td>
+                            <td><img src="img/graph_cc2.png" alt="composante connexe"></td>
+                            <td><img src="img/graph_cc3.png" alt="composante connexe"></td>
+                            <td><img src="img/graph_cc4.png" alt="composante connexe"></td>
+                        </tr>
+                    </table>
+                    </p>
+                    On veut réaliser un algorithme qui puisse nous déterminer les composantes connexes d'un graphe donné en entrée.
+                    Pour cela on va utiliser le type de données partition décrit plus haut. On va procéder de la manière suivante :
+                    <ul>
+                        <li>Créer une partition dont les éléments sont les nœuds,</li>
+                        <li>Pour chaque arête du graphe, fusionner dans la partition des classes contenant les extrémités de l'arête 
+                            (ne rien faire s'ils sont déjà dans la même classe),</li>
+                    </ul>
+                </p>
+            </section>
+
+            <section>
+                <h2 id="arbre">Arbre couvrant de poids minimal et algorithme de Kruskal</h2>
+                <p>Un <em>arbre</em> est un graphe connexe et sans cycle, ce qui revient à dire que pour deux sommets d'un arbre, il n'existe 
+                    qu'un seul chemin les reliant. <br />
+                    Un <em>arbre couvrant</em> d'un graphe est un arbre qui vérifie que :
+                    <ul>
+                        <li>ses nœuds sont les mêmes que ceux du graphe,</li>
+                        <li>la liste de ses arêtes est extraite de la liste des arêtes du graphe.</li>
+                    </ul>
+                    Sur un graphe non orienté valué (ie que ses arêtes possèdent un poids), un arbre couvrant est de poids minimal si 
+                    la somme des valuations de ses arêtes est minimale. <br/>
+                    Pour déterminer un arbre couvrant est de poids minimal, on va utiliser l'algorithme de Kruskal en se servant du type
+                    partition. <br/>
+                    Pour l'algorithme de Kruskal, on effectue les étapes suivantes :
+                    <ol>
+                        <li>Ordonner par ordre croissant de valuation les arêtes (cette étape peut être omise si on ne cherche pas un 
+                            arbre couvrant de poids minimal),</li>
+                            <li>Créer une partition dont les éléments sont les nœuds du graphe,</li>
+                            <li>Créer une liste d'arêtes A, vide,</li>
+                            <li>Pour chaque arête, si les deux extrémités de l'arête ne sont pas dans la même composante 
+                                connexe, alors, fusionner les classes auxquelles elles appartiennent et ajouter cette arête à A.</li>
+                    </ol>
+                    Après ces opérations, A contient les arêtes d'un arbre couvrant du graphe, et si le point 1 a été réalisé, celui-ci est 
+                    de poids minimal.
+                    <em>Remarque : dans le cas où le graphe de départ n'est pas connexe, l'algorithme fonctionne et renvoie alors une forêt 
+                        couvrante de poids minimal.</em>
+                </p>
+            </section>
+
+            <section>
+                <h2 id="realisation">Réalisation du labyrinthe</h2>
+                <p>On cherche à construire un labyrinthe qu'on va implémenté sous forme de graphe. Pour ce faire, on va au préalable mélanger
+                    l'ordre des arêtes du graphe (pour ne pas avoir quelque chose de trop ordonné) avant de lui appliquer l'algorithme de Kruskal.
+                </p>
+            </section>
+
+            <section>
+                <h2 id="visualisation">Visualisation du labyrinthe</h2>
+                <p>Après tout ce travail, on va enfin pouvoir visualiser notre labyrinthe grâce à la SDL2. <br />
+                Voici le résultat :
+                <img src="img/labyrinthe_resizeimage.jpg" alt="labyrinthe" class="centrer">
+                <p class="legende">Un exemple de labyrinthe</p>
+            </p>
+            </section>
+            <p class="transition">Enfin, nous pourrons voir le résultat de notre travail <a href="jeu.html">ici</a>.</p>
+        </div>
+            
+            <footer>
+                <p>Contenu de la page</p>
+                <p><a href="#deb_page">Haut de page</a></p>
+            </footer>
+    </body>
