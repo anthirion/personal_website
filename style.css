@@ -1,6 +1,11 @@
 :root {
-    --blue-btn: #0078D4;
     --default-margin: 30px;
+    --blue-btn: #0078D4;
+    --blue-hover: #006DC1;
+}
+
+* {
+    box-sizing: border-box;
 }
 
 html {
@@ -44,7 +49,8 @@ header nav a {
 header nav a:hover {
     color: rgba(0, 0, 0, 1);
     text-decoration: underline;
-    font-size: 22px;
+    /* 1.5rem = 1.5 * font-size value defined in body */
+    font-size: 1.5rem;
 }
 
 #logo {
@@ -55,11 +61,11 @@ header nav a:hover {
 
 h1 {
     text-align: center;
-    font-size: 32px;
+    font-size: 3rem;
     margin-bottom: 15px;
 }
 
-p:not([class]) {
+section p {
     text-align: center;
     margin-top: 0;
     margin-bottom: var(--default-margin);
@@ -84,11 +90,46 @@ p:not([class]) {
 }
 
 .projects_list img, .articles_list img {
-    height: 192px;
     width: 250px;
+    height: auto;
 }
 
 #to_the_top_button {
     float: right;
     margin: var(--default-margin);
+}
+
+/* Specific CSS style for articles */
+h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    margin-top: 40px;
+}
+
+.illustration {
+    width: 80%;
+    height: auto;
+    /* To center the image, make sure you have the 2 following lines */
+    display: block;
+    margin: 0 auto;
+}
+
+section {
+    width: 100%;
+    margin: auto;
+}
+
+button {
+    color: #fff;
+    font-size: 1.5rem;
+    background-color: var(--blue-btn);
+    width: 322px;
+    height: 50px;
+    /* To center the button, make sure you have the 2 following lines */
+    display: block;
+    margin: 60px auto 60px;
+}
+
+article p {
+    text-align: left;
 }
