@@ -4,16 +4,16 @@
     --blue-hover: #006DC1;
 }
 
-* {
+/* * {
     box-sizing: border-box;
-}
+} */
 
 html {
     scroll-behavior: smooth;
 }
 
 body {
-    font-family: "Inter", sans-serif;
+    font-family: "Inter", "Poppins", sans-serif;
     font-size: 16px;
     line-height: 1.8;
     font-weight: normal;
@@ -125,9 +125,14 @@ button {
     background-color: var(--blue-btn);
     width: 322px;
     height: 50px;
+    border: none;
     /* To center the button, make sure you have the 2 following lines */
     display: block;
     margin: 60px auto 60px;
+}
+
+button:hover {
+    background-color: var(--blue-hover);
 }
 
 article p {
