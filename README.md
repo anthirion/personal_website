@@ -1,2 +1,3 @@
 # My personal website
-This repo stores the code used for my personal website. This website is hosted by github pages.
+Bienvenue sur le repo qui hoste le code utilisé pour mon site web. Mon site web a pour but de présenter mes différents projets, les difficultés rencontrées, les raisonnements par lesquels je suis passé et enfin le résultat obtenu.
+Ce site web est hébergé par [GitHub Pages] (anthirion.github.io).
