@@ -4,10 +4,6 @@
     --blue-hover: #006DC1;
 }
 
-/* * {
-    box-sizing: border-box;
-} */
-
 html {
     scroll-behavior: smooth;
 }
@@ -50,11 +46,6 @@ header nav a {
     height: auto;
 }
 
-.projects_list a, .articles_list a {
-    color: #000;
-    text-decoration: none;
-}
-
 header nav a:hover {
     color: rgba(0, 0, 0, 1);
     text-decoration: underline;
@@ -71,12 +62,6 @@ h1 {
     text-align: center;
     font-size: 3rem;
     margin-bottom: 15px;
-}
-
-section p {
-    text-align: center;
-    margin-top: 0;
-    margin-bottom: var(--default-margin);
 }
 
 .social_links {
@@ -102,6 +87,23 @@ section p {
     height: auto;
 }
 
+.projects_list a, .articles_list a {
+    color: #000;
+    text-decoration: none;
+}
+
+section p {
+    /* Style for articles and projects blocks */
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: var(--default-margin);
+}
+
+.date {
+    text-align: left;
+    margin-bottom: 0;
+}
+
 #to_the_top_button {
     float: right;
     margin: var(--default-margin);
@@ -112,6 +114,13 @@ h2 {
     font-size: 2rem;
     margin-bottom: 20px;
     margin-top: 40px;
+}
+
+h3 {
+    font-size: 1.2rem;
+    margin: 5px 0;
+    font-weight: 100;
+    text-decoration: underline;
 }
 
 .illustration {
@@ -145,4 +154,22 @@ button:hover {
 
 article p {
     text-align: left;
+}
+
+video {
+    /* Center each video horizontally */
+    display: block;
+    margin: 0 auto;
+}
+
+article img {
+    display: block;
+    margin: var(--default-margin) auto 0;
+    width: 80%;
+    height: auto;
+}
+
+.legend {
+    text-align: center;
+    font-style: italic;
 }
