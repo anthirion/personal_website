@@ -38,7 +38,7 @@
                 <li>Découvrir la bibliothèque SDL2 pour les rendus graphiques</li>
                 <li>Découvrir ou revoir des algorithmes de recherche de chemin</li>
             </ul>
-            Après une démonstration du résultat, je présenterai les différentes étapes du projets dans cet ordre: apprentissage de la bibliothèque SDL2, découverte de nouvelles structures de données et développement de parcours de graphes.
+            <p>Après une démonstration du résultat, je présenterai les différentes étapes du projets dans cet ordre: apprentissage de la bibliothèque SDL2, découverte de nouvelles structures de données et développement de parcours de graphes.</p>
         </p>
 
         <h2>Démonstration</h2>
@@ -62,7 +62,7 @@
                 <li>la gestion du son</li>
                 <li>la gestion de périphériques tels que la souris, le clavier ou encore le joystick</li>
             </ul>
-            Pour plus d'informations au sujet de cette bibliothèque, vous pouvez visiter <a href="https://www.libsdl.org/">leur site</a>
+            <p>Pour plus d'informations au sujet de cette bibliothèque, vous pouvez visiter <a href="https://www.libsdl.org/">leur site</a></p>
         </p>
         <h3>Dessiner sur un rendu</h3>
         <p>
@@ -108,13 +108,13 @@
                 <li>l'implémentation par marqueurs</li>
                 <li>l'implémentation arborescente</li>
             </ul>
-            L'implémentation par marqueurs consiste à gérer un tableau des classes. Je ne m'attarderai pas sur cette implémentation, j'expliquerai plus en détails l'implémentation arborescente. Dans cette dernière implémentation, on représente la partition par une forêt, chaque arbre représentant une classe. Les noeuds de l'arbre sont les éléments de la classe et la racine est l'étiquette de la classe. Les graphes ont été dessinés avec l'outil <em>Graphviz</em>.
+            <p>L'implémentation par marqueurs consiste à gérer un tableau des classes. Je ne m'attarderai pas sur cette implémentation, j'expliquerai plus en détails l'implémentation arborescente. Dans cette dernière implémentation, on représente la partition par une forêt, chaque arbre représentant une classe. Les noeuds de l'arbre sont les éléments de la classe et la racine est l'étiquette de la classe. Les graphes ont été dessinés avec l'outil <em>Graphviz</em>.</p>
         </p>
         <h3>Composantes connexes</h3>
         <p>
             Un graphe non orienté est connexe s'il existe toujours un chemin reliant deux nœuds quelconques du graphe. Les composantes connexes d'un graphe est l'ensemble contenant les sous-graphes connexes maximaux au sens de l'inclusion.
             <p><img src="img/labyrinth/graph_example.png" alt="exemple de graphe"></p>
-            Ce graphe possède 4 composantes connexes :
+            <p>Ce graphe possède 4 composantes connexes :</p>
             <p><table>
                 <tr>
                     <td><img src="img/labyrinth/graph_cc1.png" alt="composante connexe"></td>
@@ -124,7 +124,7 @@
                 </tr>
             </table>
             </p>
-            On veut réaliser un algorithme qui puisse nous déterminer les composantes connexes d'un graphe donné en entrée. Pour cela on va utiliser le type de données partition décrit plus haut. On va procéder de la manière suivante :
+            <p>On veut réaliser un algorithme qui puisse nous déterminer les composantes connexes d'un graphe donné en entrée. Pour cela on va utiliser le type de données partition décrit plus haut. On va procéder de la manière suivante :</p>
             <ul>
                 <li>Créer une partition dont les éléments sont les nœuds,</li>
                 <li>Pour chaque arête du graphe, fusionner dans la partition des classes contenant les extrémités de l'arête  (ne rien faire s'ils sont déjà dans la même classe),</li>
@@ -137,16 +137,16 @@
                 <li>ses nœuds sont les mêmes que ceux du graphe,</li>
                 <li>la liste de ses arêtes est extraite de la liste des arêtes du graphe.</li>
             </ul>
-            Sur un graphe non orienté valué (ie que ses arêtes possèdent un poids), un arbre couvrant est de poids minimal si la somme des valuations de ses arêtes est minimale. <br/>
-            Pour déterminer un arbre couvrant est de poids minimal, on va utiliser l'algorithme de Kruskal en se servant du type partition. Pour l'algorithme de Kruskal, on effectue les étapes suivantes :
+            <p>Sur un graphe non orienté valué (ie que ses arêtes possèdent un poids), un arbre couvrant est de poids minimal si la somme des valuations de ses arêtes est minimale. <br/>
+            Pour déterminer un arbre couvrant est de poids minimal, on va utiliser l'algorithme de Kruskal en se servant du type partition. Pour l'algorithme de Kruskal, on effectue les étapes suivantes :</p>
             <ol>
                 <li>Ordonner par ordre croissant de valuation les arêtes (cette étape peut être omise si on ne cherche pas un arbre couvrant de poids minimal),</li>
                 <li>Créer une partition dont les éléments sont les nœuds du graphe,</li>
                 <li>Créer une liste d'arêtes A, vide,</li>
                 <li>Pour chaque arête, si les deux extrémités de l'arête ne sont pas dans la même composante connexe, alors, fusionner les classes auxquelles elles appartiennent et ajouter cette arête à A.</li>
             </ol>
-            Après ces opérations, A contient les arêtes d'un arbre couvrant du graphe, et si le point 1 a été réalisé, celui-ci est  de poids minimal.
-            <em>Remarque : dans le cas où le graphe de départ n'est pas connexe, l'algorithme fonctionne et renvoie alors une forêt couvrante de poids minimal.</em>
+            <p>Après ces opérations, A contient les arêtes d'un arbre couvrant du graphe, et si le point 1 a été réalisé, celui-ci est  de poids minimal.
+            <em>Remarque : dans le cas où le graphe de départ n'est pas connexe, l'algorithme fonctionne et renvoie alors une forêt couvrante de poids minimal.</em></p>
         </p>
         <h3>Réalisation du labyrinthe</h3>
         <p>
