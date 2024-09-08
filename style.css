@@ -87,6 +87,10 @@ h1 {
     margin: 0 auto;
 }
 
+.projects_list img:hover, .articles_list img:hover {
+    transform: scale(1.1);
+}
+
 .projects_list a, .articles_list a {
     color: #000;
     text-decoration: none;
@@ -96,12 +100,12 @@ section p {
     /* Style for articles and projects blocks */
     font-size: 1.1em;
     text-align: center;
-    margin: 0 var(--min-margin) var(--default-margin) var(--min-margin);
+    margin: var(--min-margin);
 }
 
 .date {
     text-align: left;
-    margin-bottom: 0;
+    margin-bottom: var(--min-margin);
     margin-left: 40px;
 }
 
@@ -224,6 +228,14 @@ article img {
         margin: 0 var(--default-margin) 0 var(--default-margin);
     }
 
+    #logo {
+        opacity: .5;
+    }
+
+    #logo:hover {
+        opacity: 1;
+    }
+
     .projects_list, .articles_list {
         display: flex;
         flex-flow: row nowrap;
@@ -237,13 +249,35 @@ article img {
         width: 250px;
     }
 
+    .date {
+        margin-left: 0;
+    }
+
+    .github_link {
+        opacity: .33;
+    }
+
+    .github_link:hover {
+        opacity: 1;
+    }
+
     .social_links img {
         width: 100%;
         height: auto;
     }
 
+    .social_links img:hover {
+        transform: scale(1.1);
+    }
+
     #to_the_top_button {
         width: 70px;
         height: auto;
+    }
+}
+
+@media screen and (min-width: 1400px) {
+    .projects_list, .articles_list {
+        column-gap: 80px;
     }
 }
