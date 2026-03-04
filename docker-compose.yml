@@ -1,0 +1,25 @@
+services:
+  db:
+    image: postgres:15.17-trixie
+    restart: always
+    container_name: blogDB
+    environment:
+      POSTGRES_USER: blog_dev
+      POSTGRES_PASSWORD: iW*dQ7kL&ZYk8aFC&mq6ou
+      POSTGRES_DB: articles
+    ports:
+      - "5432:5432"
+
+  web:
+    build: .
+    container_name: blog-django
+    depends_on:
+      - db
+    environment:
+      DEBUG: True
+      HOST: db
+      POSTGRES_USER: blog_dev
+      POSTGRES_PASSWORD: iW*dQ7kL&ZYk8aFC&mq6ou
+      POSTGRES_DB: articles
+    ports:
+      - "8000:8000"
