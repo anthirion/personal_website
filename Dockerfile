@@ -1,4 +1,4 @@
-FROM python:3.15.0a6-slim-trixie
+FROM python:3.14.3-slim-trixie
 RUN apt-get update && apt-get install -y libpq-dev gcc
 WORKDIR /app
 COPY blog/ ./blog/
