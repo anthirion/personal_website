@@ -2,7 +2,7 @@ services:
   db:
     image: postgres:15.17-trixie
     restart: always
-    container_name: blogDB
+    container_name: blog-db
     environment:
       POSTGRES_USER: blog_dev
       POSTGRES_PASSWORD: iW*dQ7kL&ZYk8aFC&mq6ou
